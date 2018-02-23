@@ -1,11 +1,9 @@
 import alertify from 'alertify.js';
 import _ from 'lodash';
 export class CartController {
-  constructor($http, $state, $log, $window, $document, CartService) {
+  constructor($http, $window, $document, CartService) {
     'ngInject';
     this.http = $http;
-    this.state = $state;
-    this.log = $log;
     this.window = $window;
     this.document = $document;
     this.CartService = CartService;
@@ -37,7 +35,7 @@ export class CartController {
       };
     }, err => {
       this.isLoading = false;
-      this.log.debug(err);
+      alertify.log(err);
     });
   }
 
@@ -54,7 +52,7 @@ export class CartController {
       };
     }, err => {
       this.isLoading = false;
-      this.log.debug(err);
+      alertify.log(err);
     });
   }
 
@@ -64,12 +62,10 @@ export class CartController {
   }
 
   remoteCartProduct(index) {
-    this.log.debug(index);
     this.myCartProducts.splice(index, 1);
   }
 
   getTotalAmount() {
-    this.log.debug(this.myCartProducts);
     let totalAmount = 0;
     _.each(this.myCartProducts, _p => {
       totalAmount = totalAmount += _p.price;
