@@ -1,0 +1,65 @@
+<div>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Sample Cart</a>
+      </div>
+
+      <div class="btn-group pull-right" auto-close="disabled" style="margin-top: 10px" uib-dropdown>
+        <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
+          Total Item: {{cartCtrl.myCartProducts.length}} <span class="caret"></span>
+        </button>
+        <ul style="width: 300px; padding: 10px;" class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+          <li>Total: {{cartCtrl.getTotalAmount()}}</li>
+          <li class="divider"></li>
+          <li style="background: #eee; padding: 5px;" data-ng-if="cartCtrl.myCartProducts.length === 0">No Item in cart..</li>
+          <li data-ng-if="cartCtrl.myCartProducts.length > 0" style="background: #eee; margin-bottom: 5px; padding: 10px;"
+            data-ng-repeat="cart in cartCtrl.myCartProducts track by $index">
+            <div class="item">
+              <div class="item-left">
+                <div class="row">
+                  <div class="col-md-4">
+                    <img ng-src="{{cart.image}}" alt="" width="50" height="50"/>
+                  </div>
+                  <div class="col-md-8 item-info">
+                    <span class="pull-right">
+                      <button data-ng-click="cartCtrl.remoteCartProduct($index)"
+                        class="btn btn-xs btn-danger pull-right">x
+                      </button>
+                    </span>
+                    <div>{{cart.name}}</div>
+                    <div>{{cart.price}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a class="text-center" href="">View Cart</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="products container" style="margin-top: 60px;">
+    <div class="row items">
+      <div class="col-md-3 card" data-ng-repeat="p in cartCtrl.products">
+        <img class="card-img-top" ng-src="{{p.image}}" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">{{p.name}}</h4>
+          <p class="card-text">{{p.detail}}</p>
+          <button class="btn btn-primary" data-ng-click="cartCtrl.addToCart(p)">Add To Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
