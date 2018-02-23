@@ -1,4 +1,6 @@
 {
+  "name": "myapp",
+  "version": "1.0",
   "dependencies": {
     "alertify.js": "^1.0.12",
     "angular": "^1.6.2",
