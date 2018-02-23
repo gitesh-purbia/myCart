@@ -27,14 +27,3 @@ function watch(done) {
   gulp.watch(conf.path.tmp('index.html'), reloadBrowserSync);
   done();
 }
-
-const serverFactory = require('spa-server');
-
-gulp.task('webserver', () => {
-  const server = serverFactory.create({
-    path: './dist',
-    port: 3000,
-    fallback: 'index.html'
-  });
-  server.start();
-});
