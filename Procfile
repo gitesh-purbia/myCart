@@ -1,1 +1,1 @@
-web: npm run qa
+web: npm run prod
