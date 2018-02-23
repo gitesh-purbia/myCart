@@ -1,20 +1,41 @@
 import angular from 'angular';
 
-import {techsModule} from './app/techs/index';
 import 'angular-ui-router';
 import routesConfig from './routes';
 
-import {main} from './app/main';
-import {header} from './app/header';
-import {title} from './app/title';
-import {footer} from './app/footer';
-
 import './index.scss';
+import 'angular-ui-bootstrap';
+
+import {
+  CartController
+} from './app/cart/cart.controller';
+
+import {
+  CartDetailController
+} from './app/cart/detail/detail.controller';
+
+import {
+  LoadMoreProducts
+} from './app/cart/directives/load.more.products';
+
+import {
+  CartService
+} from './app/cart/cart.service';
+
+import {
+  config
+} from './index.config';
+
+import {
+  CartsRoutes
+} from './app/cart/routes';
 
 angular
-  .module('app', [techsModule, 'ui.router'])
+  .module('myCart', ['ui.router', 'ui.bootstrap'])
   .config(routesConfig)
-  .component('app', main)
-  .component('fountainHeader', header)
-  .component('fountainTitle', title)
-  .component('fountainFooter', footer);
+  .config(config)
+  .config(CartsRoutes)
+  .controller('CartController', CartController)
+  .controller('CartDetailController', CartDetailController)
+  .directive('loadMoreProducts', () => new LoadMoreProducts())
+  .service('CartService', CartService);
