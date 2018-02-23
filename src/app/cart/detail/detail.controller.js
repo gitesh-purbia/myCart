@@ -1,8 +1,7 @@
 export class CartDetailController {
-  constructor($http, $state, AppConstants) {
+  constructor($http, $state) {
     'ngInject';
     this.http = $http;
-    this.AppConstants = AppConstants;
     this.state = $state;
   }
 
