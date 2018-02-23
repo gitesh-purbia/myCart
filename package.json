@@ -72,7 +72,7 @@
     "serve:dist": "gulp serve:dist",
     "test": "gulp test",
     "test:auto": "gulp test:auto",
-    "prod": "gulp webserver"
+    "prod": "node server.js"
   },
   "eslintConfig": {
     "globals": {
